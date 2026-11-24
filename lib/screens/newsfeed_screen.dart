@@ -9,17 +9,29 @@ class NewsfeedScreen extends StatelessWidget {
     return ListView(
       children: const [
         NewsfeedCard(
-          userName: 'Steve Rogers',
-          postContent: 'I can do this all day! #AvengersAssemble',
-          date: '2 hours ago',
-          numOfLikes: 10,
+          userName: 'Ken Feria',
+          postContent: 'Kinda miss them not a little much #1WeekNa',
+          date: '3 hours ago',
+          numOfLikes: 1,
+          profileImagePath: 'assets/images/ken_profile.jpg',
         ), // NewsfeedCard
         NewsfeedCard(
-          userName: 'Tony Stark',
-          postContent: 'I am Iron Man. #GeniusBillionairePlayboyPhilanthropist',
-          date: 'December 1, 2023',
-          numOfLikes: 3000,
+          userName: 'Xyle Tan',
+          postContent: '',
+          date: 'November 16, 2026',
+          numOfLikes: 256,
           hasImages: true,
+          imageAssetPath: 'assets/images/food_date.jpg',
+          profileImagePath: 'assets/images/xyle_profile.jpg',
+        ), // NewsfeedCard
+        NewsfeedCard(
+          userName: 'Ken Feria',
+          postContent: 'Movie night date with him <3',
+          date: 'November 22, 2026',
+          numOfLikes: 143,
+          hasImages: true,
+          imageAssetPath: 'assets/images/movie_night.jpg',
+          profileImagePath: 'assets/images/ken_profile.jpg',
         ), // NewsfeedCard
       ],
     ); //ListView

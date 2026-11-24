@@ -25,7 +25,7 @@ flutter:
   fonts:
     - family: Klavika
       fonts:
-        - asset: assets/fonts/Klavika-Regular.ttf
+        - asset: assets/fonts/Klavika-Regular.otf
     - family: Frutiger
       fonts:
         - asset: assets/fonts/FrutigerLTStd-Roman.ttf

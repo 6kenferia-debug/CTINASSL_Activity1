@@ -9,6 +9,8 @@ class NewsfeedCard extends StatelessWidget {
   final String date;
   final int? numOfLikes;
   final bool? hasImages;
+  final String? imageAssetPath;
+  final String? profileImagePath;
   const NewsfeedCard({
     super.key,
     required this.userName,
@@ -16,6 +18,8 @@ class NewsfeedCard extends StatelessWidget {
     required this.date,
     this.numOfLikes,
     this.hasImages,
+    this.imageAssetPath,
+    this.profileImagePath,
   });
 
   @override
@@ -35,7 +39,12 @@ class NewsfeedCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.person),
+                profileImagePath == null
+                    ? Icon(Icons.person)
+                    : CircleAvatar(
+                        radius: ScreenUtil().setSp(16),
+                        backgroundImage: AssetImage(profileImagePath!),
+                      ),
                 SizedBox(width: screenUtilWidth),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,26 +88,46 @@ class NewsfeedCard extends StatelessWidget {
             ),
             SizedBox(height: ScreenUtil().setHeight(5)),
             hasImages == true
-                ? const Image(image: AssetImage('assets/images/iron_man.jpg'))
+                ? Image(image: AssetImage(imageAssetPath!))
                 : SizedBox.shrink(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton.icon(
-                  onPressed: () {
-                    // print('like button pressed');
-                  },
-                  icon: Icon(Icons.thumb_up, color: Colors.blue),
-                  label: CustomText(
-                    text: numOfLikes.toString(),
-                    fontSize: ScreenUtil().setSp(12),
-                    color: fbDarkPrimary,
-                  ),
+                Row(
+                  children: [
+                    IconButton(
+                      tooltip: 'Like',
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.thumb_up,
+                        color: Colors.blue,
+                        size: screenUtilIconSize,
+                      ),
+                    ),
+                    CustomText(
+                      text: numOfLikes.toString(),
+                      fontSize: ScreenUtil().setSp(12),
+                      color: fbDarkPrimary,
+                    ),
+                  ],
                 ),
-                CustomText(
-                  text: 'Comment',
-                  fontSize: ScreenUtil().setSp(12),
-                  color: fbDarkPrimary,
+                Row(
+                  children: [
+                    IconButton(
+                      tooltip: 'Comment',
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.comment,
+                        color: fbDarkPrimary,
+                        size: screenUtilIconSize,
+                      ),
+                    ),
+                    CustomText(
+                      text: 'Comment',
+                      fontSize: ScreenUtil().setSp(12),
+                      color: fbDarkPrimary,
+                    ),
+                  ],
                 ),
                 TextButton.icon(
                   onPressed: () {
@@ -115,7 +144,10 @@ class NewsfeedCard extends StatelessWidget {
             ),
             Row(
               children: [
-                Icon(Icons.person),
+                CircleAvatar(
+                  radius: ScreenUtil().setSp(12),
+                  backgroundImage: AssetImage('assets/images/ken_profile.jpg'),
+                ),
                 SizedBox(width: ScreenUtil().setWidth(10)),
                 Container(
                   padding: EdgeInsets.fromLTRB(
